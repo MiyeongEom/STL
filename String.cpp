@@ -98,6 +98,7 @@ String String::operator+(const String& rhs) const
 	return temp; //넘겨줘야함.
 }
 
+
 	// get
 std::string String::getString() const
 {

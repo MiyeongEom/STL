@@ -38,6 +38,35 @@ public:
 		return os;
 	}
 
+	friend std::istream& operator>>(std::istream& is, String& str) {
+		std::string temp;
+		is >> temp; // istream 객체로부터 string 값을 읽음
+
+		// 현재 String 객체에 확보된 자원보다 읽어들인 문자열의 길이가 더 길면
+		// 이전에 확보한 메모리를 모두 삭제하고, 더 큰 크기로 메모리를 다시 할당합니다.
+		if (temp.length() > str.len) {
+			delete[] str.p;
+			str.p = new char[temp.length()];
+			str.len = temp.length();
+		}
+
+		// 읽어들인 문자열을 현재 String 객체에 저장
+		for (size_t i = 0; i < temp.length(); ++i) {
+			str.p[i] = temp[i];
+		}
+
+		return is;
+	}
+
+	/*
+	friend std::istream& operator>>(std::istream& is, String& other) {
+		std::string str;
+		is >> str;
+		other = String(str.c_str());
+		return is;
+	}
+	*/
+
 	// gettor
 	std::string getString() const;
 

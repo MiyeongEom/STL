@@ -75,3 +75,7 @@ int main()
 // get_allocator() : 컨테이너의 할당자를 반환하는 함수
 
 // 즉 두 리스트가 서로 다른 할당자를 갖는다면, 동작은 정의되지 않는다.
+
+// <가 아닌 comp를 이용해 정렬됨.
+// bool cmp(const Type1& a, const Type2& b);
+// 첫 번쨰 인자가 두 번째 인자보다 작을 경우 true를 반환
